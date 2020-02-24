@@ -10,18 +10,32 @@ player = [
   
   # board that stores the result
   board = ['', '', '', '', '', '', '', '', '']
+
+  def welcome()
+    # puts '|  | |=== |     |     === '
+    # puts '|--| |=== |     |    |   |'
+    # puts '|  | |=== |===  |===  === '
+    puts ' '
+    puts '|    | |=== |    |===   ===  |\  /| |=== ' 
+    puts '| /\ | |=== |    |     |   | | \/ | |=== '
+    puts '|/  \| |=== |=== |===   ===  |    | |=== '
+    puts ' '
+    puts ' '
+  end
+   welcome()
   
   # we need to display the bord to the user
   puts 'Welcome to the tic tac toe game'
   def show_board()
-    puts ' X | X | X '
-    puts '***********'
-    puts '   | O |   '
-    puts '***********'
-    puts '   | O |   '
+    puts '       X | X | X        '
+    puts '      ***********       '
+    puts '         | O |          '
+    puts '      ***********       '
+    puts '         | O |          '
   end
   
   show_board
+  
   
   # Congratulate  a winner
   
