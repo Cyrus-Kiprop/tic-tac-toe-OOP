@@ -1,12 +1,15 @@
 #!/usr/bin/env ruby
 
+require './lib/player.rb'
+token_1 = 'nothing'
+token_2 = 'nothing'
 # players
-player = [
-    { 'name' => 'Players name',
-      'token' => 'X' },
-    { 'name' => 'Players name',
-      'token' => 'O' }
-  ]
+#player = [
+#    { 'name' => 'Players name',
+#      'token' => 'X' },
+#    { 'name' => 'Players name',
+#      'token' => 'O' }
+#  ]
   
   # board that stores the result
   board = ['', '', '', '', '', '', '', '', '']
@@ -63,6 +66,11 @@ player = [
     puts '***********'
     puts ' 7 | 8 | 9 '
   end
-  
-  choose_position
+
+def game_play()
+player_one = Player.new('Alexis')
+player_two = Player.new('Kip')
+player_one.choose_position
+player_two.choose_position
+end
   
