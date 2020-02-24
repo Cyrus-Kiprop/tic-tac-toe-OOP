@@ -1,3 +1,54 @@
 #!/usr/bin/env ruby
 
-puts 'hello world buddies'
+# players
+player = [
+    { 'name' => 'Players name',
+      'token' => 'X' },
+    { 'name' => 'Players name',
+      'token' => 'O' }
+  ]
+  
+  # board that stores the result
+  board = ['', '', '', '', '', '', '', '', '']
+  
+  # we need to display the bord to the user
+  puts 'Welcome to the tic tac toe game'
+  def show_board()
+    puts ' X | X | X '
+    puts '***********'
+    puts '   | O |   '
+    puts '***********'
+    puts '   | O |   '
+  end
+  
+  show_board
+  
+  # Congratulate  a winner
+  
+  def congratulate()
+    puts '     |    |  |  |\  |  |\  |  |===   ++++ '
+    puts '     | /\ |  |  | \ |  | * |  |===   + \+ '
+    puts '     |/  \|  |  |  \|  |  \|  |===   *  \ '
+  end
+  
+  congratulate
+  
+  # make a move
+  # how to detemine the fate of the game
+  # reset when the game is over
+  # validate moves
+  # get user inputs
+  
+  # blank out the position that is already played
+  
+  puts 'Please choose a position to play!!!'
+  def choose_position()
+    puts ' 1 | 2 | 3 '
+    puts '***********'
+    puts ' 4 | 5 | 6 '
+    puts '***********'
+    puts ' 7 | 8 | 9 '
+  end
+  
+  choose_position
+  
