@@ -1,77 +1,37 @@
-#!/usr/bin/env ruby
 
+#!/usr/bin/env ruby
 require './lib/player.rb'
 require './lib/utils.rb'
-
+require './lib/validate.rb'
 # board that stores the result
-
 class TicTacToe < Player
-  include Utils
-  attr_accessor :board
-
-  def initialize(board)
-    @board = board
-  end
-
-  def self.welcome()
-    puts ' '
-    puts '|    | |=== |    |===   ===  |\  /| |=== '
-    puts '| /\ | |=== |    |     |   | | \/ | |=== '
-    puts '|/  \| |=== |=== |===   ===  |    | |=== '
-    puts ' '
-    puts ' '
-    puts 'Welcome to the tic tac toe game'
-  end
-
-  def show_board(board)
-    x = 0
-    while x < board.size
-      puts "      #{board[x]} | #{board[x + 1]} | #{board[x + 2]} \n     ***********      "
-      x += 3
-    end
-  end
+include Utils
+attr_accessor :board
+def initialize(board)
+@board = board
 end
-
+def self.welcome()
+puts ' '
+puts '| | |=== | |=== === |\ /| |=== '
+puts '| /\ | |=== | | | | | \/ | |=== '
+puts '|/ \| |=== |=== |=== === | | |=== '
+puts ' '
+puts ' '
+puts 'Welcome to the tic tac toe game'
+end
+end
 def game()
-  TicTacToe.welcome
-
-  game = TicTacToe.new(['', '', '', '', '', '', '', '', ''])
-
-  board = game.board
-
-  game.show_board(board)
-
-  puts 'Press any key to start the game'
-
-  puts "Enter Your Full names"
-  p "Player 1:"
-  first_player = gets.strip()
-  p "Player 2"
-  second_player = gets.strip()
-  
-  # instantiate the players
-  player_one = Player.new(first_player)
-  player_two = Player.new(second_player)
-
-  
-end
-
-game
-
-# we need to display the bord to the user
-
-# show_board(board)
-
-# puts available_positions(board)
-
-# puts 'Please choos'
-
-# Congratulate  a winner
-
-# def congratulate()
-#   puts '     |    |  |  |\  |  |\  |  |===   ++++ '
-#   puts '     | /\ |  |  | \ |  | * |  |===   + \+ '
-#   puts '     |/  \|  |  |  \|  |  \|  |===   *  \ '
-# end
-
-# congratulate
+TicTacToe.welcome
+game = TicTacToe.new(['', '', '', '', '', '', '', '', ''])
+board = game.board
+game.show_board(board)
+puts 'Press any key to start the game'
+puts "Enter Your Full names"
+p "Player 1:"
+first_player = gets.strip()
+p "Player 2"
+second_player = gets.strip()
+# instantiate the players
+player_one = Player.new(first_player)
+player_two = Player.new(second_player)
+position_player_one = player_one.choose_position(first_player,board)
