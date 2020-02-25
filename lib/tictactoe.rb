@@ -15,7 +15,7 @@ class TicTacToe
     puts '| /\ | |=== |    |     |   | | \/ | |=== '
     puts '|/  \| |=== |=== |===   ===  |    | |=== '
     puts ' '
-    show_board
+    welcome_board
   end
 
   def welcome_board()
@@ -29,13 +29,13 @@ class TicTacToe
     puts "\n"
   end
 
-  def show_board(_board)
+  def show_board()
     puts ' <--The Tic Tac Toe-->'
-    puts '         | X | O        '
-    puts '      ***********       '
-    puts '       X | O | X        '
-    puts '      ***********       '
-    puts '         | O |          '
+    puts "       #{board[0]}  | #{board[1]} | #{board[2]}         "
+    puts "      ***********       " 
+    puts "       #{board[3]}  | #{board[4]} | #{board[5]}        " 
+    puts "      ***********       " 
+    puts "       #{board[6]}  | #{board[7]} | #{board[8]}        " 
     puts ' <--The Tic Tac Toe-->'
   end
 
@@ -46,7 +46,7 @@ class TicTacToe
   def play; end
 end
 
-game = TicTacToe.new(['', '', '', '', '', '', '', '', ''])
+game = TicTacToe.new(['X', 'O', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
 
 game.welcome
 
