@@ -18,6 +18,7 @@ class Player < TicTacToe
       }
     ]
   end
+  
 
   def make_move; end
 
