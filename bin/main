@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-# players
-
 # board that stores the result
 board = ['', '', '', '', '', '', '', '', '']
 
@@ -41,6 +39,13 @@ puts "#{player_two} is Player_two with Token \"O\" "
 
 puts "\n \n"
 
+$players = [
+  { 'name' => [player_one],
+    'token' => 'X' },
+  { 'name' => [player_two],
+    'token' => 'O' }
+]
+
 # puts 'Please choose a position to play!!!'
 def choose_position()
   puts ' 1 | 2 | 3 '
@@ -50,7 +55,7 @@ def choose_position()
   puts ' 7 | 8 | 9 '
 end
 
-players = [
+$players = [
   { 'name' => [player_one],
     'token' => 'X' },
   { 'name' => [player_two],
@@ -61,26 +66,26 @@ players = [
 def play(board)
   game_on = true
   counter = 0
-  player = players[0]['name']
+  player = $players[0]['name']
 
   while game_on
 
-    if player == players[0]['name']
+    if player == $players[0]['name']
       puts "#{player} please choose you position in the board"
       choose_position
       puts '\n'
       puts 'Position:'
       gets.chomp
-      player = players[1]['name']
+      player = $players[1]['name']
     end
 
-    if player == players[1]['name']
+    if player == $players[1]['name']
       puts "#{player} please choose you position in the board"
       choose_position
       puts '\n'
       puts 'Position:'
       gets.chomp
-      player = players[1]['name']
+      player = $players[1]['name']
     end
 
     # Display the  played result
@@ -111,7 +116,7 @@ def congratulate(player)
   puts '     |/  \|  |  |  \|  |  \|  |===   *  \ '
 end
 
-congratulate(players[0]['name'])
+congratulate($players[0]['name'])
 
 # make a move
 # how to detemine the fate of the game
