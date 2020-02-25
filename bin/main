@@ -1,76 +1,77 @@
 #!/usr/bin/env ruby
 
 require './lib/player.rb'
-token_1 = 'nothing'
-token_2 = 'nothing'
-# players
-#player = [
-#    { 'name' => 'Players name',
-#      'token' => 'X' },
-#    { 'name' => 'Players name',
-#      'token' => 'O' }
-#  ]
-  
-  # board that stores the result
-  board = ['', '', '', '', '', '', '', '', '']
+require './lib/utils.rb'
 
-  def welcome()
-    # puts '|  | |=== |     |     === '
-    # puts '|--| |=== |     |    |   |'
-    # puts '|  | |=== |===  |===  === '
+# board that stores the result
+
+class TicTacToe < Player
+  include Utils
+  attr_accessor :board
+
+  def initialize(board)
+    @board = board
+  end
+
+  def self.welcome()
     puts ' '
-    puts '|    | |=== |    |===   ===  |\  /| |=== ' 
+    puts '|    | |=== |    |===   ===  |\  /| |=== '
     puts '| /\ | |=== |    |     |   | | \/ | |=== '
     puts '|/  \| |=== |=== |===   ===  |    | |=== '
     puts ' '
     puts ' '
-  end
-   welcome()
-  
-  # we need to display the bord to the user
-  puts 'Welcome to the tic tac toe game'
-  def show_board()
-    puts '       X | X | X        '
-    puts '      ***********       '
-    puts '         | O |          '
-    puts '      ***********       '
-    puts '         | O |          '
-  end
-  
-  show_board
-  
-  
-  # Congratulate  a winner
-  
-  def congratulate()
-    puts '     |    |  |  |\  |  |\  |  |===   ++++ '
-    puts '     | /\ |  |  | \ |  | * |  |===   + \+ '
-    puts '     |/  \|  |  |  \|  |  \|  |===   *  \ '
-  end
-  
-  congratulate
-  
-  # make a move
-  # how to detemine the fate of the game
-  # reset when the game is over
-  # validate moves
-  # get user inputs
-  
-  # blank out the position that is already played
-  
-  puts 'Please choose a position to play!!!'
-  def choose_position()
-    puts ' 1 | 2 | 3 '
-    puts '***********'
-    puts ' 4 | 5 | 6 '
-    puts '***********'
-    puts ' 7 | 8 | 9 '
+    puts 'Welcome to the tic tac toe game'
   end
 
-def game_play()
-player_one = Player.new('Alexis')
-player_two = Player.new('Kip')
-player_one.choose_position
-player_two.choose_position
+  def show_board(board)
+    x = 0
+    while x < board.size
+      puts "      #{board[x]} | #{board[x + 1]} | #{board[x + 2]} \n     ***********      "
+      x += 3
+    end
+  end
 end
+
+def game()
+  TicTacToe.welcome
+
+  game = TicTacToe.new(['', '', '', '', '', '', '', '', ''])
+
+  board = game.board
+
+  game.show_board(board)
+
+  puts 'Press any key to start the game'
+
+  puts "Enter Your Full names"
+  p "Player 1:"
+  first_player = gets.strip()
+  p "Player 2"
+  second_player = gets.strip()
   
+  # instantiate the players
+  player_one = Player.new(first_player)
+  player_two = Player.new(second_player)
+
+  
+end
+
+game
+
+# we need to display the bord to the user
+
+# show_board(board)
+
+# puts available_positions(board)
+
+# puts 'Please choos'
+
+# Congratulate  a winner
+
+# def congratulate()
+#   puts '     |    |  |  |\  |  |\  |  |===   ++++ '
+#   puts '     | /\ |  |  | \ |  | * |  |===   + \+ '
+#   puts '     |/  \|  |  |  \|  |  \|  |===   *  \ '
+# end
+
+# congratulate
