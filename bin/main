@@ -62,7 +62,7 @@ $players = [
     'token' => 'O' }
 ]
 
-# Players making turns
+ # rubocop: disable Metrics/MethodLength
 def play(board)
   game_on = true
   counter = 0
@@ -95,6 +95,7 @@ def play(board)
     counter += 1
   end
 end
+# rubocop: enable Metrics/MethodLength
 
 play(board)
 puts " \n \n"
