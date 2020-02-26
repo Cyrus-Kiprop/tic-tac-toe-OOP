@@ -77,7 +77,14 @@ def play(board)
       puts 'Position:'
       gets.chomp
       player = $players[1]['name']
+      counter+= 1
+    puts "Turn #{counter}"
+    puts 'Current results on the table'
+    show_board
+    game_on = false if counter > board.size - 1
     end
+
+  
 
     if player == $players[1]['name']
       puts "#{player} please choose you position in the board"
@@ -85,14 +92,15 @@ def play(board)
       puts '\n'
       puts 'Position:'
       gets.chomp
-      player = $players[1]['name']
-    end
-
-    # Display the  played result
+      player = $players[0]['name']
+      counter+= 1
+    puts "Turn #{counter}"
     puts 'Current results on the table'
     show_board
     game_on = false if counter > board.size - 1
-    counter += 1
+    end
+
+
   end
 end
 
