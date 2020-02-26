@@ -87,15 +87,19 @@ def play(board)
 
   while game_on
       puts "Turn #{turn}"
-    if player == $players[0]['name']
+    if player == $players[0][:name]
       puts "#{player} please choose you position in the board"
       puts "\n \n"
       choose_position
       puts "\n \n"
       puts 'Position:'
-      plays[gets.chomp.to_i-1] = 'X'
-      game_on = false if turn > board.size - 1 || win?(plays,'X')
-      player = $players[1]['name']
+      plays[gets.chomp.to_i-1] = $players[0][:token]
+       if turn > board.size - 4 && win?(plays,$players[0][:token])
+        game_on = false
+        congratulate(player) 
+       end
+    
+      player = $players[1][:name]
       turn+= 1
       puts "Turn #{turn}"
       puts 'Current results on the table'
@@ -105,22 +109,25 @@ def play(board)
 
   
 
-    if player == $players[1]['name']
+    if player == $players[1][:name]
       puts "#{player} please choose you position in the board"
       puts "\n \n"
       choose_position
       puts "\n \n"
       puts 'Position:'
-      plays[gets.chomp.to_i-1] = 'O'
-      game_on = false if turn > board.size - 1 || win?(plays,'O')
-      player = $players[0]['name']
+      plays[gets.chomp.to_i-1] = $players[1][:token]
+      if turn > board.size - 4 && win?(plays,$players[1][:token])
+        game_on = false
+        congratulate(player) 
+       end
+    
+      player = $players[0][:name]
       turn+= 1
     puts "Turn #{turn}"
     puts 'Current results on the table'
     puts "\n \n"
     show_board
     end
-    congratulate(player)
   end
   p plays
 end
