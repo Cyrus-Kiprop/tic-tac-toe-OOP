@@ -19,11 +19,12 @@ class Player < TicTacToe
     ]
   end
 
+ 
+
   def make_move; end
 
   def play; end
 end
 
-game_play = Player.new('Alexis Sanchez', 'Cyrus Kiprop')
 
-puts game_play.player
+# puts game_play.player
