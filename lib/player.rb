@@ -1,4 +1,4 @@
-require './lib/tictactoe.rb'
+require_relative './tictactoe.rb'
 
 class Player < TicTacToe
   attr_reader :player
@@ -18,7 +18,6 @@ class Player < TicTacToe
       }
     ]
   end
-  
 
   def make_move; end
 

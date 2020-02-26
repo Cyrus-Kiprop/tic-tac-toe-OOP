@@ -1,4 +1,4 @@
-require './helper.rb'
+require_relative './helper.rb'
 
 class TicTacToe
   include Helperable
@@ -32,9 +32,9 @@ class TicTacToe
   def show_board()
     puts ' <--The Tic Tac Toe-->'
     puts "       #{board[0]}  | #{board[1]} | #{board[2]}         "
-    puts "      ***********       " 
+    puts "       ***********       " 
     puts "       #{board[3]}  | #{board[4]} | #{board[5]}        " 
-    puts "      ***********       " 
+    puts "       ***********       " 
     puts "       #{board[6]}  | #{board[7]} | #{board[8]}        " 
     puts ' <--The Tic Tac Toe-->'
   end
@@ -46,8 +46,7 @@ class TicTacToe
   def play; end
 end
 
-game = TicTacToe.new(['X', 'O', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
+# game = TicTacToe.new()
 
-game.welcome
+# game.welcome
 
-game.show_board
