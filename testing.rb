@@ -16,11 +16,11 @@ welcome
 # we need to display the bord to the user
 puts 'Welcome to the tic tac toe game'
 def show_board(board)
-  puts "       #{board[0]}  | #{board[1]} | #{board[2]}        " 
-  puts "      **********      " 
-  puts "       #{board[3]}  | #{board[4]} | #{board[5]}        " 
-  puts "      **********      " 
-  puts "       #{board[6]}  | #{board[7]} | #{board[8]}        " 
+  puts "       #{board[0]}  | #{board[1]} | #{board[2]}        "
+  puts "      **********      "
+  puts "       #{board[3]}  | #{board[4]} | #{board[5]}        "
+  puts "      **********      "
+  puts "       #{board[6]}  | #{board[7]} | #{board[8]}        "
 end
 
 show_board(board)
@@ -65,9 +65,10 @@ $players = [
 ]
 def win?(board, token)
   factor = Proc.new { |item| item == token }
-  combinations = [ board[0..2], board[3..5], board[6..8], [board[0], board[3], board[6]], [board[1], board[4], board[7]], [board[2], board[5], board[8]], [board[0], board[4], board[8]], [board[2], board[4], board[6]],]
-return true if combinations.any?{ |value| value.all?(&factor) }
-false
+  combinations = [board[0..2], board[3..5], board[6..8], [board[0], board[3], board[6]], [board[1], board[4], board[7]], [board[2], board[5], board[8]], [board[0], board[4], board[8]], [board[2], board[4], board[6]],]
+  return true if combinations.any? { |value| value.all?(&factor) }
+
+  false
 end
 
 # Congratulate  a winner
@@ -78,6 +79,8 @@ def congratulate(player)
   puts '     |/  \|  |  |  \|  |  \|  |===   *  \ '
 end
 
+
+
 # Players making turns
 def play(board)
   game_on = true
@@ -87,36 +90,36 @@ def play(board)
   p $players[1]['name']
 
   while game_on
-      puts "Turn #{turn}"
+    puts "Turn #{turn}"
     if player == $players[0]['name']
       puts "#{player} please choose you position in the board"
       puts "\n \n"
       choose_position
       puts "\n \n"
       puts 'Position:'
-      board[gets.chomp.to_i-1] = $players[0]['token']
-       if win?(board,$players[0]['token'])
+      board[gets.chomp.to_i - 1] = $players[0]['token']
+      if win?(board, $players[0]['token'])
         game_on = false
-       end
-      player = $players[1]['name']
-      turn+= 1
+      end
+      player = $players[1]['name'] if game_on
+      turn += 1
       puts "Turn #{turn}"
       puts 'Current results on the table'
       puts "\n \n"
       show_board(board)
     elsif player == $players[1]['name']
-        puts "#{player} please choose you position in the board"
-        puts "\n \n"
-        choose_position
-        puts "\n \n"
-        puts 'Position:'
-        board[gets.chomp.to_i-1] = $players[1]['token']
-        if win?(board,$players[1]['token'])
-          game_on = false 
-         end
-      
-        player = $players[0]['name']
-        turn+= 1
+      puts "#{player} please choose you position in the board"
+      puts "\n \n"
+      choose_position
+      puts "\n \n"
+      puts 'Position:'
+      board[gets.chomp.to_i - 1] = $players[1]['token']
+      if win?(board, $players[1]['token'])
+        game_on = false
+       end
+
+      player = $players[0]['name'] if game_on
+      turn += 1
       puts "Turn #{turn}"
       puts 'Current results on the table'
       puts "\n \n"
@@ -138,7 +141,6 @@ puts 'The Draw/Tie occurs when the entire board is filled with both X and O and'
 puts 'yet no winning combinations can be found'
 
 puts " \n \n"
-
 
 # make a move
 # how to detemine the fate of the game
