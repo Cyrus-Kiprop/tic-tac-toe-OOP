@@ -63,12 +63,12 @@ class TicTacToe
   end
 
   # Congratulate  a winner
-def congratulate(player)
-  puts "#{player} is the winner!!!"
-  puts '     |    |  |  |\  |  |\  |  |===   ++++ '
-  puts '     | /\ |  |  | \ |  | * |  |===   + \+ '
-  puts '     |/  \|  |  |  \|  |  \|  |===   *  \ '
-end
+  def congratulate(player)
+    puts "#{player} is the winner!!!"
+    puts '     |    |  |  |\  |  |\  |  |===   ++++ '
+    puts '     | /\ |  |  | \ |  | * |  |===   + \+ '
+    puts '     |/  \|  |  |  \|  |  \|  |===   *  \ '
+  end
 
   def number_of_turns(board)
     turns = 0
@@ -78,11 +78,9 @@ end
     turns
   end
 
+  def draw_game(board, token)
+    return true if number_of_turns(board) == board.size - 1 and !win(board, token)
 
-
-  def draw_game; end
+    false
+  end
 end
-
-# game = TicTacToe.new()
-
-# game.welcome

@@ -2,8 +2,7 @@
 require_relative '../lib/player.rb'
 require_relative '../lib/tictactoe.rb'
 
-def gamePlay(board)
-  # welcome the user
+def game_play(board)
   game = TicTacToe.new(board)
 
   game.welcome
@@ -12,26 +11,24 @@ def gamePlay(board)
   puts "PRESS ANY KEY TO START THE GAME \n \n"
   gets.strip
 
-  # user input
   puts 'Player 1: '
-  player_one = game.get_player_names
-  while game.is_valid_name?(player_one) == false
-    puts 'Invalid name!!!'
+  player_one = game.player_names
+  while game.valid_name?(player_one) == false
+    puts 'INVALID NAME!!!'
     puts 'Please Re-enter Player 1 name'
-    player_one = game.get_player_names
+    player_one = game.player_names
   end
 
   puts 'Player 2: '
-  player_two = game.get_player_names
-  while game.is_valid_name?(player_two) == false
-    puts 'Invalid name!!!'
+  player_two = game.player_names
+  while game.valid_name?(player_two) == false
+    puts 'INVALID NAME!!!'
     puts 'Please Re-enter Player 2 name'
-    player_two = game.get_player_names
+    player_two = game.player_names
   end
 
   game.next_line
 
-  # instantiate players
   game_play = Player.new(player_one, player_two)
   game_player = game_play.player
 
@@ -46,135 +43,7 @@ def gamePlay(board)
 
   game.next_line
 
-  # p game_player
-
   game_play.play(game.board, game_player)
 end
 
-gamePlay([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
-
-# board that stores the result
-# board = ['', '', '', '', '', '', '', '', '']
-
-# def welcome()
-#   puts ' '
-#   puts '|    | |=== |    |===   ===  |\  /| |=== '
-#   puts '| /\ | |=== |    |     |   | | \/ | |=== '
-#   puts '|/  \| |=== |=== |===   ===  |    | |=== '
-#   puts ' '
-#   puts ' '
-# end
-# welcome
-
-# # we need to display the bord to the user
-# puts 'Welcome to the tic tac toe game'
-# def show_board()
-#   puts '       X | X | X        '
-#   puts '      ***********       '
-#   puts '         | O |          '
-#   puts '      ***********       '
-#   puts '         | O |          '
-# end
-
-# show_board
-
-# puts 'Please press any key to play'
-# gets.chomp
-
-# # Instantiating the player
-# puts 'Player_1 Name: '
-# player_one = gets.chomp
-# puts "#{player_one} is Player_one with Token \"X\" "
-# puts ' '
-# puts 'player_2 Name: '
-# player_two = gets.chomp
-# puts "#{player_two} is Player_two with Token \"O\" "
-
-# puts "\n \n"
-
-# $players = [
-#   { 'name' => [player_one],
-#     'token' => 'X' },
-#   { 'name' => [player_two],
-#     'token' => 'O' }
-# ]
-
-# # puts 'Please choose a position to play!!!'
-# def choose_position()
-#   puts ' 1 | 2 | 3 '
-#   puts '***********'
-#   puts ' 4 | 5 | 6 '
-#   puts '***********'
-#   puts ' 7 | 8 | 9 '
-# end
-
-# $players = [
-#   { 'name' => [player_one],
-#     'token' => 'X' },
-#   { 'name' => [player_two],
-#     'token' => 'O' }
-# ]
-# def play(board)
-#   game_on = true
-#   counter = 0
-#   player = $players[0]['name']
-
-#   while game_on
-
-#     if player == $players[0]['name']
-#       puts "#{player} please choose you position in the board"
-#       choose_position
-#       puts '\n'
-#       puts 'Position:'
-#       gets.chomp
-#       player = $players[1]['name']
-#     end
-
-#     if player == $players[1]['name']
-#       puts "#{player} please choose you position in the board"
-#       choose_position
-#       puts '\n'
-#       puts 'Position:'
-#       gets.chomp
-#       player = $players[1]['name']
-#     end
-
-#     # Display the  played result
-#     puts 'Current results on the table'
-#     show_board
-#     game_on = false if counter > board.size - 1
-#     counter += 1
-#   end
-# end
-
-# play(board)
-# puts " \n \n"
-
-# puts 'this is where the players make a move in turns'
-
-# puts 'There are Eight possible winning combinations:'
-# puts 'TOP ROW, MIDDLE ROW, BOTTOM ROW, FIRST_COLUMN, SECOND_COLUMN, THIRD COLUMN, AND THE DIAGONALS '
-# puts 'The Draw/Tie occurs when the entire board is filled with both X and O and'
-# puts 'yet no winning combinations can be found'
-
-# puts " \n \n"
-
-# # Congratulate  a winner
-# def congratulate(player)
-#   puts "#{player} is the winner!!!"
-#   puts '     |    |  |  |\  |  |\  |  |===   ++++ '
-#   puts '     | /\ |  |  | \ |  | * |  |===   + \+ '
-#   puts '     |/  \|  |  |  \|  |  \|  |===   *  \ '
-# end
-
-# congratulate($players[0]['name'])
-
-# # make a move
-# # how to detemine the fate of the game
-# # reset when the game is over
-# # validate moves
-# # get user inputs
-
-# # blank out the position that is already played
-
-# # choose_position
+game_play([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
