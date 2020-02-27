@@ -45,12 +45,10 @@ class TicTacToe
     position = Array.new(9, ' ')
 
     board.each_with_index do |item, idx|
-      position[idx] = idx + 1 unless item == 'X' || item == 'O'
+      position[idx] = idx + 1 unless %w[X O].include?(item)
     end
     show_board(position)
   end
-
-  def win_game; end
 
   def win?(board, token)
     factor = proc { |item| item == token }
@@ -64,6 +62,7 @@ class TicTacToe
 
   # Congratulate  a winner
   def congratulate(player)
+    puts '----GAME OVER----'
     puts "#{player} is the winner!!!"
     puts '     |    |  |  |\  |  |\  |  |===   ++++ '
     puts '     | /\ |  |  | \ |  | * |  |===   + \+ '
@@ -73,7 +72,7 @@ class TicTacToe
   def number_of_turns(board)
     turns = 0
     board.each do |token|
-      turns += 1 if token == 'X' or token == 'O'
+      turns += 1 if %w[X O].include?(token)
     end
     turns
   end
