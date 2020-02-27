@@ -15,15 +15,15 @@ welcome
 
 # we need to display the bord to the user
 puts 'Welcome to the tic tac toe game'
-def show_board()
-  puts '       X | X | X        '
-  puts '      ***********       '
-  puts '         | O |          '
-  puts '      ***********       '
-  puts '         | O |          '
+def show_board(board)
+  puts "       #{board[0]}  | #{board[1]} | #{board[2]}        " 
+  puts "      **********      " 
+  puts "       #{board[3]}  | #{board[4]} | #{board[5]}        " 
+  puts "      **********      " 
+  puts "       #{board[6]}  | #{board[7]} | #{board[8]}        " 
 end
 
-show_board
+show_board(board)
 
 puts 'Please press any key to play'
 gets.chomp
@@ -80,56 +80,51 @@ end
 
 # Players making turns
 def play(board)
-  plays = [0,0,0,0,0,0,0,0,0]
   game_on = true
   turn = 1
   player = $players[0]['name']
+  p $players[0]['name']
+  p $players[1]['name']
 
   while game_on
       puts "Turn #{turn}"
-    if player == $players[0][:name]
+    if player == $players[0]['name']
       puts "#{player} please choose you position in the board"
       puts "\n \n"
       choose_position
       puts "\n \n"
       puts 'Position:'
-      plays[gets.chomp.to_i-1] = $players[0][:token]
-       if turn > board.size - 4 && win?(plays,$players[0][:token])
+      board[gets.chomp.to_i-1] = $players[0]['token']
+       if win?(board,$players[0]['token'])
         game_on = false
-        congratulate(player) 
        end
-    
-      player = $players[1][:name]
+      player = $players[1]['name']
       turn+= 1
       puts "Turn #{turn}"
       puts 'Current results on the table'
       puts "\n \n"
-      show_board
-    end
-
-  
-
-    if player == $players[1][:name]
-      puts "#{player} please choose you position in the board"
+      show_board(board)
+    elsif player == $players[1]['name']
+        puts "#{player} please choose you position in the board"
+        puts "\n \n"
+        choose_position
+        puts "\n \n"
+        puts 'Position:'
+        board[gets.chomp.to_i-1] = $players[1]['token']
+        if win?(board,$players[1]['token'])
+          game_on = false 
+         end
+      
+        player = $players[0]['name']
+        turn+= 1
+      puts "Turn #{turn}"
+      puts 'Current results on the table'
       puts "\n \n"
-      choose_position
-      puts "\n \n"
-      puts 'Position:'
-      plays[gets.chomp.to_i-1] = $players[1][:token]
-      if turn > board.size - 4 && win?(plays,$players[1][:token])
-        game_on = false
-        congratulate(player) 
-       end
-    
-      player = $players[0][:name]
-      turn+= 1
-    puts "Turn #{turn}"
-    puts 'Current results on the table'
-    puts "\n \n"
-    show_board
+      show_board(board)
     end
   end
-  p plays
+  p board
+  congratulate(player)
 end
 
 play(board)
