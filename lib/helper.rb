@@ -1,7 +1,15 @@
 module Helperable
-  def validate_move; end
+  def valid_move?(board, index)
+    true if index.between?(0, 8) && !is_position_taken?(board, index)
+ end
 
-  def is_position_taken?; end
+  def is_position_taken?(board, indx)
+    if board[indx] == 'X' || board[indx] == 'O'
+      true
+    else
+      false
+    end
+  end
 
   def get_player_names()
     input = gets.strip

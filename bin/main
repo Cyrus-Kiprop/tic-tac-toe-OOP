@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require_relative '../lib/player.rb'
-require '../lib/tictactoe.rb'
+require_relative '../lib/tictactoe.rb'
 
 def gamePlay(board)
   # welcome the user
@@ -11,7 +11,44 @@ def gamePlay(board)
 
   puts "PRESS ANY KEY TO START THE GAME \n \n"
   gets.strip
+
+  # user input
+  puts 'Player 1: '
+  player_one = game.get_player_names
+  while game.is_valid_name?(player_one) == false
+    puts 'Invalid name!!!'
+    puts 'Please Re-enter Player 1 name'
+    player_one = game.get_player_names
+  end
+
+  puts 'Player 2: '
+  player_two = game.get_player_names
+  while game.is_valid_name?(player_two) == false
+    puts 'Invalid name!!!'
+    puts 'Please Re-enter Player 2 name'
+    player_two = game.get_player_names
+  end
+
+  game.next_line
+
+  # instantiate players
+  game_play = Player.new(player_one, player_two)
+  game_player = game_play.player
+
+  puts '            Success!!! '
+  puts "Player 1: [#{game_player[0][:name]}]   Token: \"#{game_player[0][:token]}\""
+  puts "Player 2: [#{game_player[1][:name]}]   Token: \"#{game_player[1][:token]}\""
+  puts '            Success!!! '
+
+  game.next_line
+
   game.show_board
+
+  game.next_line
+
+  # p game_player
+
+  game_play.play(game.board, game_player)
 end
 
 gamePlay([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
