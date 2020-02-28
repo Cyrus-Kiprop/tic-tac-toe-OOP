@@ -39,7 +39,7 @@ def game_play(board)
 
   game.next_line
 
-  game.show_board
+  game.show_board(proc,board)
 
   game.next_line
 
