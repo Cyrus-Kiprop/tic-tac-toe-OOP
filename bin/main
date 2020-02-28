@@ -3,9 +3,16 @@ require_relative '../lib/player.rb'
 require_relative '../lib/tictactoe.rb'
 
 def game_play(board)
+  print_string = proc { |string| puts string }
+
   game = TicTacToe.new(board)
 
-  game.welcome
+  puts game.next_line
+  puts game.welcome
+  puts game.next_line
+
+  puts game.welcome_board
+
   puts 'WELCOME TO THE TIC TAC TOE GAME'
 
   puts "PRESS ANY KEY TO START THE GAME \n \n"
@@ -39,11 +46,11 @@ def game_play(board)
 
   game.next_line
 
-  game.show_board(proc,board)
+  game.show_board(print_string, board)
 
   game.next_line
 
-  game_play.play(game.board, game_player)
+  game_play.play(game.board, game_player, print_string)
 end
 
 game_play([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])

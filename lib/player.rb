@@ -1,5 +1,4 @@
 require_relative './tictactoe.rb'
-# rubocop: disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 class Player < TicTacToe
   attr_reader :player
 
@@ -45,9 +44,21 @@ class Player < TicTacToe
     pos
   end
 
+  def win_or_draw?(turns, player, proc, board)
+    if turns >= 5 and win?(board, player[:token])
+      congratulate(player[:name], proc)
+      true
+    elsif turns == 9 and !win?(board, player[:token])
+      proc.call('IT IS A DRAW GAME AND YOU ARE BOTH LOOSERS ')
+      true
+    else
+      false
+    end
+  end
+
   def play(board, _players, proc)
     counter = 0
-    x = number_of_turns(board) #=> 0
+    x = number_of_turns(board)
 
     while x < board.size - 1
       who_is_playing = current_player(board)
@@ -62,17 +73,9 @@ class Player < TicTacToe
       proc.call("This is the number of turns #{number_of_turns(board)}")
       next_line
       show_board(proc, board)
-      if number_of_turns(board) >= 5 and win?(board, who_is_playing[:token])
-        congratulate(who_is_playing[:name], proc)
-        break
-
-      elsif number_of_turns(board) == 9 and !win?(board, who_is_playing[:token])
-        proc.call('IT IS A DRAW GAME AND YOU ARE BOTH LOOSERS ')
-        break
-      end
+      break if win_or_draw?(number_of_turns(board), who_is_playing, proc, board)
 
       counter += 1
     end
   end
 end
-# rubocop: enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
