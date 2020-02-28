@@ -16,7 +16,7 @@ module Helperable
   end
 
   def next_line()
-    puts "\n \n"
+    "\n \n"
   end
 
   def valid_name?(name)
