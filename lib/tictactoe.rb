@@ -9,45 +9,42 @@ class TicTacToe
   end
 
   def welcome()
-    puts ' '
-    puts ' '
-    puts '|    | |=== |    |===   ===  |\  /| |=== '
-    puts '| /\ | |=== |    |     |   | | \/ | |=== '
-    puts '|/  \| |=== |=== |===   ===  |    | |=== '
-    puts ' '
-    welcome_board
+    '     |    | |=== |    |===   ===  |\  /| |===
+     | /\ | |=== |    |     |   | | \/ | |===
+     |/  \| |=== |=== |===   ===  |    | |===
+    '
   end
 
   def welcome_board()
-    puts ' <--The Tic Tac Toe-->'
-    puts '         | X | O        '
-    puts '      ***********       '
-    puts '       X | O | X        '
-    puts '      ***********       '
-    puts '         | O |          '
-    puts ' <--The Tic Tac Toe-->'
-    puts "\n"
+    '     <--The Tic Tac Toe-->
+             | X | O
+          ***********
+           X | O | X
+          ***********
+             | O |
+     <--The Tic Tac Toe-->'
   end
 
-  def show_board(board = @board)
+  def show_board(proc, board = @board)
     message = (board == @board ? ' Current score listing' : ' Current available positions')
-    puts message
-    puts ' <--The Tic Tac Toe-->'
-    puts "       #{board[0]}  | #{board[1]} | #{board[2]}         "
-    puts '       ***********       '
-    puts "       #{board[3]}  | #{board[4]} | #{board[5]}        "
-    puts '       ***********       '
-    puts "       #{board[6]}  | #{board[7]} | #{board[8]}        "
-    puts ' <--The Tic Tac Toe-->'
+    proc.call(" #{message} \n ")
+
+    proc.call("<--The Tic Tac Toe-->
+           #{board[0]}  | #{board[1]} | #{board[2]}
+           ***********
+           #{board[3]}  | #{board[4]} | #{board[5]}
+           ***********
+           #{board[6]}  | #{board[7]} | #{board[8]}
+     <--The Tic Tac Toe-->")
   end
 
-  def choose_position(board)
+  def choose_position(board, proc)
     position = Array.new(9, ' ')
 
     board.each_with_index do |item, idx|
       position[idx] = idx + 1 unless %w[X O].include?(item)
     end
-    show_board(position)
+    show_board(proc, position)
   end
 
   def win?(board, token)
@@ -60,13 +57,13 @@ class TicTacToe
     false
   end
 
-  # Congratulate  a winner
-  def congratulate(player)
-    puts '----GAME OVER----'
-    puts "#{player} is the winner!!!"
-    puts '     |    |  |  |\  |  |\  |  |===   ++++ '
-    puts '     | /\ |  |  | \ |  | * |  |===   + \+ '
-    puts '     |/  \|  |  |  \|  |  \|  |===   *  \ '
+  def congratulate(player, proc)
+    proc.call("              ----GAME OVER----\n
+            #{player} is the winner!!! \n
+         |   |  |  |\  |  |\  |  |===   ++++
+         | /\ |  |  | \ |  | * |  |===   + \+
+         |/  \|  |  |  \|  |  \|  |===   *  \ +
+          ")
   end
 
   def number_of_turns(board)
