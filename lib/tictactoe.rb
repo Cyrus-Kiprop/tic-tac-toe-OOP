@@ -2,7 +2,7 @@ require_relative './helper.rb'
 
 class TicTacToe
   include Helperable
-  attr_accessor :board
+  attr_reader :board
 
   def initialize(board)
     @board = board
