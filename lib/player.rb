@@ -56,26 +56,33 @@ class Player < TicTacToe
     end
   end
 
-  def play(board, _players, proc)
-    counter = 0
-    x = number_of_turns(board)
-
-    while x < board.size - 1
-      who_is_playing = current_player(board)
-      proc.call("Turn #{number_of_turns(board)} [#{who_is_playing[:name]}]: Its your turn -> choose a position on the score board")
+  def update_game(board,proc,player) 
+    proc.call("Turn #{number_of_turns(board)} [#{player[:name]}]: Its your turn -> choose a position on the score board")
       choose_position(board, proc)
       next_line
       proc.call('Position:')
 
       pos = user_position(proc)
 
-      make_move(board, pos, who_is_playing[:token]) if valid_move?(board, pos)
+      make_move(board, pos, player[:token]) if valid_move?(board, pos)
       proc.call("This is the number of turns #{number_of_turns(board)}")
       next_line
       show_board(proc, board)
+  end
+
+  def game_iteration(proc, board)
+    counter = 0
+    turns = number_of_turns(board)
+    while turns < board.size - 1
+      who_is_playing = current_player(board)
+      update_game(board,proc,who_is_playing)
       break if win_or_draw?(number_of_turns(board), who_is_playing, proc, board)
 
       counter += 1
     end
+  end
+
+  def play(board, _players, proc)
+    game_iteration(proc, board)
   end
 end
