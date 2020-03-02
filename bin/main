@@ -38,7 +38,6 @@ def game_play(board)
   puts "PRESS ANY KEY TO START THE GAME \n \n"
   gets.strip
   player_names = name_validator(game)
-
   game.next_line
 
   game_play = Player.new(player_names[0], player_names[1])
