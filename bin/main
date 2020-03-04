@@ -1,3 +1,58 @@
 #!/usr/bin/env ruby
+require_relative '../lib/player.rb'
+require_relative '../lib/tictactoe.rb'
 
-puts 'hello world buddies'
+def name_validator(game)
+  player_names = []
+  puts 'Player 1: '
+  player_names[0] = game.player_names
+  while game.valid_name?(player_names[0]) == false
+    puts 'INVALID NAME!!!'
+    puts 'Please Re-enter Player 1 name'
+    player_names[0] = game.player_names
+  end
+
+  puts 'Player 2: '
+  player_names[1] = game.player_names
+  while game.valid_name?(player_names[1]) == false
+    puts 'INVALID NAME!!!'
+    puts 'Please Re-enter Player 2 name'
+    player_names[1] = game.player_names
+  end
+  player_names
+end
+
+def game_play(board)
+  print_string = proc { |string| puts string }
+
+  game = TicTacToe.new(board)
+
+  puts game.next_line
+  puts game.welcome
+  puts game.next_line
+
+  puts game.welcome_board
+
+  puts 'WELCOME TO THE TIC TAC TOE GAME'
+
+  puts "PRESS ANY KEY TO START THE GAME \n \n"
+  gets.strip
+  player_names = name_validator(game)
+  game.next_line
+
+  game_play = Player.new(player_names[0], player_names[1])
+  game_player = game_play.player
+
+  puts "Player 1: [#{game_player[0][:name]}]   Token: \"#{game_player[0][:token]}\""
+  puts "Player 2: [#{game_player[1][:name]}]   Token: \"#{game_player[1][:token]}\""
+
+  game.next_line
+
+  game.show_board(print_string, board)
+
+  game.next_line
+
+  game_play.play(game.board, game_player, print_string)
+end
+
+game_play([' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
