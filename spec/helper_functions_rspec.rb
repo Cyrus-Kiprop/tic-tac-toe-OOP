@@ -36,7 +36,7 @@ RSpec.describe Helperable do
 
   describe '#next_line' do
     it 'returns two empty lines successively' do
-      expect(subject.next_line()).to eql "\n \n"
+      expect(subject.next_line).to eql "\n \n"
     end
   end
 end

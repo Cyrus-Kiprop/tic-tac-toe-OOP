@@ -30,8 +30,9 @@ RSpec.describe TicTacToe do
   end
 
   context '#win?' do
-    it 'iterates through the elements of a cobination and return true if all the elements are similar indicating there os a winner' do
-      expect(subject.win?(board, "X")).to eql true
+    it 'iterates through the elements of a cobination and return true if all the elements are
+        similar indicating there is a winner' do
+      expect(subject.win?(board, 'X')).to eql true
     end
     it 'iterated through the elements in the combination and returns false if all the elements arent similar' do
       expect(subject.win?(['X', '', '', '', '', '', '', '', ''], 'X')).not_to eql true

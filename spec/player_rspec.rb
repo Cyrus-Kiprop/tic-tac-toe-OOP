@@ -6,10 +6,7 @@ RSpec.describe Player do
   let(:new_board) { ['X', 'X', 'X', 'O', '', 'O', '', 'O', 'O'] }
   let(:tictactoe) { TicTacToe.new(board) }
   let(:player_one) { 'Alexis' }
-  let(:hash_player) {
-    [name: 'Alexis',
-     token: 'X']
-  }
+
   let(:player_two) { 'Kip' }
   before { @a_proc = proc { |string| puts string } }
   subject { Player.new(player_one, player_two) }
@@ -34,15 +31,15 @@ RSpec.describe Player do
       expect(subject.win_or_draw?(6, subject.player[0], @a_proc, board)).to be true
     end
     it 'returns true and prints a draw message when number of turns is 9 and there is no winner' do
-        expect(subject.win_or_draw?(9, subject.player[1], @a_proc, board)).to be true
+      expect(subject.win_or_draw?(9, subject.player[1], @a_proc, board)).to be true
     end
     it 'returns false otherwise' do
-        expect(subject.win_or_draw?(1, subject.player[1], @a_proc, board)).to_not be true
+      expect(subject.win_or_draw?(1, subject.player[1], @a_proc, board)).to_not be true
     end
   end
   describe '#update_game' do
     it 'puts the board and then return nil' do
-        allow(@a_proc).to receive(:gets).and_return('board updated')
-      end
+      allow(@a_proc).to receive(:gets).and_return('board updated')
+    end
   end
 end
