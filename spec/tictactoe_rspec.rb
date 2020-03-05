@@ -53,7 +53,7 @@ RSpec.describe TicTacToe do
 
   context '#draw_game' do
     it 'returns true if there are no empty cells and there is no winner' do
-      expect(subject.draw_game(['X', 'O', 'X', 'O', 'O', 'X', 'X', 'X', 'O'], 'O')).to_not eql true
+      expect(subject.draw_game(%w[X O X O O X X X O], 'O')).to_not eql true
     end
     it 'return false if empty cells exist' do
       expect(subject.draw_game(board, 'X')).to eql false
