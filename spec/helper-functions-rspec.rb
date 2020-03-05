@@ -19,7 +19,7 @@ RSpec.describe Helperable do
   end
 
   describe '#position_taken' do
-    it 'return true if the position is taken on the board'do
+    it 'return true if the position is taken on the board' do
       expect(subject.position_taken?(board, 3)).to be true
     end
     it 'return false if the position on the board is empty' do
@@ -31,13 +31,12 @@ RSpec.describe Helperable do
     it 'returns a string from the user ' do
       allow_any_instance_of(Kernel).to receive(:gets).and_return('class')
       expect(subject.player_names).to eq('class')
-      end
     end
+  end
 
-  describe '#next_line' do 
+  describe '#next_line' do
     it 'returns two empty lines successively' do
       expect(subject.next_line()).to eql "\n \n"
     end
   end
-
 end
