@@ -61,12 +61,15 @@ class TicTacToe
   end
 
   def congratulate(player, proc)
-    proc.call("              ----GAME OVER----\n
+    proc.call(
+      "              ----GAME OVER----\n
             #{player} is the winner!!! \n
          |   |  |  |\  |  |\  |  |===   ++++
          | /\ |  |  | \ |  | * |  |===   + \+
          |/  \|  |  |  \|  |  \|  |===   *  \ +
-          ")
+
+      "
+    )
   end
 
   def number_of_turns(board)
