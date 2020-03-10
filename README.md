@@ -1,4 +1,4 @@
-# Rspec enumerable Testing
+# TicTacToe
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
